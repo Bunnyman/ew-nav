@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подавлення по навігації</title>
+<style>
+  :root {
+    --bg: #0f1216;
+    --text: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.5);
+    --circle-off: #2a2f36;
+    --circle-on: #e5484d;
+    --plus-on: #9f1d22;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .nav-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+  }
+
+  .circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--circle-off);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .nav-button:active .circle {
+    transform: scale(0.95);
+  }
+
+  .plus {
+    display: none;
+    color: var(--plus-on);
+  }
+
+  .plus svg {
+    display: block;
+    width: 56px;
+    height: 56px;
+  }
+
+  .label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    transition: color 0.2s ease;
+  }
+
+  .nav-button.active .circle {
+    background: var(--circle-on);
+  }
+
+  .nav-button.active .plus {
+    display: block;
+  }
+
+  .nav-button.active .label {
+    color: var(--text);
+  }
+
+  @media (max-width: 480px) {
+    .buttons {
+      gap: 20px;
+    }
+    .circle {
+      width: 90px;
+      height: 90px;
+    }
+    .plus svg {
+      width: 42px;
+      height: 42px;
+    }
+    .label {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="container">
+    <h1>Подавлення по навігації</h1>
+    <div class="buttons">
+      <button type="button" class="nav-button" data-zone="north">
+        <span class="circle">
+          <span class="plus">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="3" stroke-linecap="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </span>
+        </span>
+        <span class="label">Північ</span>
+      </button>
+      <button type="button" class="nav-button" data-zone="south">
+        <span class="circle">
+          <span class="plus">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="3" stroke-linecap="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </span>
+        </span>
+        <span class="label">Південь</span>
+      </button>
+      <button type="button" class="nav-button" data-zone="kharkiv">
+        <span class="circle">
+          <span class="plus">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="3" stroke-linecap="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </span>
+        </span>
+        <span class="label">Харків</span>
+      </button>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.nav-button').forEach(function (button) {
+      button.addEventListener('click', function () {
+        button.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
