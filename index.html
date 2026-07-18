@@ -12,6 +12,9 @@
     --circle-off: #2a2f36;
     --circle-on: #e5484d;
     --plus-on: #9f1d22;
+    /* Largest circle that still fits three in a row plus title and labels */
+    --gap: min(4vw, 48px);
+    --size: min(calc((100vw - 48px - 2 * var(--gap)) / 3), 55vh);
   }
 
   * {
@@ -36,15 +39,16 @@
   }
 
   .container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 48px;
+    gap: min(6vh, 48px);
     padding: 24px;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 2rem);
     font-weight: 600;
     letter-spacing: 0.02em;
     text-align: center;
@@ -55,14 +59,14 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    gap: 40px;
+    gap: var(--gap);
   }
 
   .nav-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: min(2.5vh, 20px);
     background: none;
     border: none;
     cursor: pointer;
@@ -71,8 +75,8 @@
   }
 
   .circle {
-    width: 120px;
-    height: 120px;
+    width: var(--size);
+    height: var(--size);
     border-radius: 50%;
     background: var(--circle-off);
     display: flex;
@@ -92,12 +96,12 @@
 
   .plus svg {
     display: block;
-    width: 56px;
-    height: 56px;
+    width: calc(var(--size) * 0.45);
+    height: calc(var(--size) * 0.45);
   }
 
   .label {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.2vw, 1.6rem);
     font-weight: 500;
     color: var(--text-dim);
     transition: color 0.2s ease;
@@ -115,22 +119,6 @@
     color: var(--text);
   }
 
-  @media (max-width: 480px) {
-    .buttons {
-      gap: 20px;
-    }
-    .circle {
-      width: 90px;
-      height: 90px;
-    }
-    .plus svg {
-      width: 42px;
-      height: 42px;
-    }
-    .label {
-      font-size: 1rem;
-    }
-  }
 </style>
 </head>
 <body>
