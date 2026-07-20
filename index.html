@@ -9,7 +9,8 @@
     --bg: #0f1216;
     --text: #ffffff;
     --text-dim: rgba(255, 255, 255, 0.5);
-    --circle-off: #2a2f36;
+    --circle-off: #4cc38a;
+    --minus-off: #0a5c39;
     --circle-on: #e5484d;
     --plus-on: #9f1d22;
     /* Largest circle that still fits three in a row plus title and labels */
@@ -89,15 +90,40 @@
     transform: scale(0.95);
   }
 
-  .plus {
+  .sign {
     display: none;
-    color: var(--plus-on);
   }
 
-  .plus svg {
+  .sign svg {
     display: block;
     width: calc(var(--size) * 0.45);
     height: calc(var(--size) * 0.45);
+  }
+
+  .minus {
+    color: var(--minus-off);
+  }
+
+  .plus {
+    color: var(--plus-on);
+  }
+
+  /* Inactive state: light green circle with a darker-green minus sign */
+  .nav-button .minus {
+    display: block;
+  }
+
+  /* Active state: red circle with a darker-red plus sign */
+  .nav-button.active .circle {
+    background: var(--circle-on);
+  }
+
+  .nav-button.active .minus {
+    display: none;
+  }
+
+  .nav-button.active .plus {
+    display: block;
   }
 
   .label {
@@ -105,14 +131,6 @@
     font-weight: 500;
     color: var(--text-dim);
     transition: color 0.2s ease;
-  }
-
-  .nav-button.active .circle {
-    background: var(--circle-on);
-  }
-
-  .nav-button.active .plus {
-    display: block;
   }
 
   .nav-button.active .label {
@@ -127,10 +145,16 @@
     <div class="buttons">
       <button type="button" class="nav-button" data-zone="north">
         <span class="circle">
-          <span class="plus">
+          <span class="sign plus">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="3" stroke-linecap="round" aria-hidden="true">
               <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </span>
+          <span class="sign minus">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="3" stroke-linecap="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
           </span>
@@ -139,10 +163,16 @@
       </button>
       <button type="button" class="nav-button" data-zone="south">
         <span class="circle">
-          <span class="plus">
+          <span class="sign plus">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="3" stroke-linecap="round" aria-hidden="true">
               <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </span>
+          <span class="sign minus">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="3" stroke-linecap="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
           </span>
@@ -151,10 +181,16 @@
       </button>
       <button type="button" class="nav-button" data-zone="kharkiv">
         <span class="circle">
-          <span class="plus">
+          <span class="sign plus">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="3" stroke-linecap="round" aria-hidden="true">
               <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </span>
+          <span class="sign minus">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="3" stroke-linecap="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
           </span>
